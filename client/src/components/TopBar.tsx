@@ -11,7 +11,7 @@ export const TopBar = (props: TopBarProps) => {
 	return (
 		<div className="bg-secondary w-100 h-12">
 			<NavigationMenu
-				className="px-4 grid-cols-2 justify-between items-center h-11 grid-rows-1 flex flex-1 items-center m-auto max-w-[992px]">
+				className="px-7 grid-cols-2 justify-between items-center h-11 grid-rows-1 flex flex-1 items-center m-auto max-w-[992px]">
 				<NavigationMenuList className="gap-2">
 					<NavigationMenuItem>
 						<RowsIcon className="text-secondary-foreground cursor-pointer" width={18} height={18} />

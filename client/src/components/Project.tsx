@@ -1,22 +1,40 @@
 import { NavigationMenuItem } from "@/components/ui/navigation-menu.tsx";
+import { useProjectContext } from "@/contexts/ProjectContext.tsx";
+import { Project as ProjectModel } from "@/models/Project.ts";
 import { clsx } from "clsx";
 import { ReactNode } from "react";
 
 type ProjectProps = {
-	name: string,
-	todoCount: number
+	project: ProjectModel,
 	icon: ReactNode
 }
 
 export const Project = (props: ProjectProps) => {
-	const { name, icon, todoCount} = props;
+	const { project, icon } = props;
+	const { name, id, todos } = project;
+	const { selectedProjectId, setSelectedProjectId } = useProjectContext();
+	
+	const selectProject = () => {
+		setSelectedProjectId(id);
+	};
+	
 	return (
-		<NavigationMenuItem className="flex justify-between w-full items-center text-sm">
+		<NavigationMenuItem className={clsx(
+			"flex justify-between w-full items-center text-sm cursor-pointer p-3 rounded hover:bg-muted",
+			selectedProjectId === id && "bg-muted",
+		)} onClick={selectProject}>
 			<div className="flex items-center gap-2">
 				{icon}
 				<span>{name}</span>
 			</div>
-			<div className={clsx(todoCount > 0 && "text-secondary")}>{todoCount}</div>
+			{
+				todos.length > 0 &&
+				<div className={clsx(
+					selectedProjectId === id ? "text-secondary" : "text-slate-400",
+				)}>
+					{todos.length}
+				</div>
+			}
 		</NavigationMenuItem>
 	);
 };

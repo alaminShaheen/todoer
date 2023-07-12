@@ -8,9 +8,9 @@ function App () {
 		<div className="h-full bg-gray-50">
 			<TopBar />
 			<div
-				className="content-wrapper grid grid-rows-1 grid-cols-[1fr_auto] items-center h-[calc(100vh-3rem)] max-w-[992px] m-auto">
+				className="content-wrapper grid grid-rows-1 grid-cols-[1fr_auto] items-center h-[calc(100vh-3rem)] max-w-[992px] m-auto p-4">
 				<Sidebar />
-				<div>Hell world</div>
+				<div>Hello world</div>
 			</div>
 		</div>
 	);
